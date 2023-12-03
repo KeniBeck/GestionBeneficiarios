@@ -65,7 +65,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                com.datastructure.code.gestionbeneficiarios/com.datastructure.code.gestionbeneficiarios.HelloApplication
+                                com.datastructure.code.gestionbeneficiarios/com.datastructure.code.gestionbeneficiarios.StartApplication
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>

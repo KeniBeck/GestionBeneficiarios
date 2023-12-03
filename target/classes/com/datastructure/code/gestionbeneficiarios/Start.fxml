@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="647.0" prefWidth="1287.0" style="-fx-background-color: #F8F9FA;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.datastructure.code.gestionbeneficiarios.StartController">
+   <children>
+      <Button layoutX="967.0" layoutY="159.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="49.0" />
+      <AnchorPane layoutX="-3.0" layoutY="-2.0" prefHeight="132.0" prefWidth="1292.0" style="-fx-background-color: #1E32EC;">
+         <children>
+            <ImageView fitHeight="136.0" fitWidth="134.0" layoutX="1096.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@bannerImg.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="118.0" layoutY="7.0" text="Gestion de Beneficiarios" textFill="#fff9f9">
+               <font>
+                  <Font name="System Bold Italic" size="76.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <TableView layoutX="142.0" layoutY="220.0" prefHeight="420.0" prefWidth="1020.0">
+        <columns>
+          <TableColumn editable="false" prefWidth="169.99998474121094" text="Documento" />
+          <TableColumn editable="false" prefWidth="237.33334350585938" text="Nombre" />
+            <TableColumn editable="false" prefWidth="154.0001220703125" text="Puntaje" />
+            <TableColumn editable="false" prefWidth="169.333251953125" sortable="false" text="Estado" />
+            <TableColumn editable="false" prefWidth="286.66668701171875" sortable="false" text="Acciones" />
+        </columns>
+      </TableView>
+      <TextField layoutX="722.0" layoutY="159.0" prefHeight="41.0" prefWidth="232.0" />
+      <MenuButton layoutX="555.0" layoutY="159.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="137.0" text="Documento">
+        <items>
+          <MenuItem mnemonicParsing="false" text="Documento" />
+          <MenuItem mnemonicParsing="false" text="Nombre" />
+        </items>
+      </MenuButton>
+      <Label layoutX="462.0" layoutY="171.0" text="Buscar por:">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="84.0" fitWidth="96.0" layoutX="238.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@addPerson.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="42.0" fitWidth="49.0" layoutX="971.0" layoutY="159.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@searchImg.png" />
+         </image>
+      </ImageView>
+   </children>
+</Pane>
