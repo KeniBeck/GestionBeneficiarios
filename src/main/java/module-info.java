@@ -6,4 +6,5 @@ module com.datastructure.code.gestionbeneficiarios {
 
     opens com.datastructure.code.gestionbeneficiarios to javafx.fxml;
     exports com.datastructure.code.gestionbeneficiarios;
+    opens com.datastructure.code.gestionbeneficiarios.FuncionesApp.Clases to javafx.base;
 }
