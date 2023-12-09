@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 
 public class StartController {
@@ -18,6 +19,8 @@ public class StartController {
     public TextField txt_puntaje;
     public RadioButton radio_No;
     public TextField txtBuscar;
+    public TableColumn<cls_beneficiario,Void> colAcciones;
+    public Pane panel_actulizarBeneficiaro;
     @FXML
     private TableView<cls_beneficiario> tableView;
     @FXML
@@ -35,6 +38,38 @@ public class StartController {
         choiceBoxBuscarPor.getItems().addAll("Documento", "Nombre","Listar a Todos");
         choiceBoxBuscarPor.setValue("Documento"); // Valor predeterminado
 
+        colAcciones.setCellFactory(param -> new TableCell<cls_beneficiario, Void>() {
+            final Button btnActualizar = new Button("Actualizar");
+            final Button btnEliminar = new Button("Eliminar");
+
+            {
+                btnActualizar.setOnAction(event -> {
+                    cls_beneficiario beneficiario = getTableView().getItems().get(getIndex());
+                    ManejoBackend.actualizarBeneficiario(beneficiario,panel_actulizarBeneficiaro);
+                });
+
+                btnEliminar.setOnAction(event -> {
+                    cls_beneficiario beneficiario = getTableView().getItems().get(getIndex());
+                    ManejoBackend.eliminarBeneficiario(beneficiario);
+                    getTableView().getItems().remove(beneficiario);
+                });
+            }
+
+            @Override
+            protected void updateItem(Void item, boolean empty) {
+                super.updateItem(item, empty);
+
+                if (empty) {
+                    setGraphic(null);
+                } else {
+                    HBox hbox = new HBox(btnActualizar, btnEliminar);
+                    setGraphic(hbox);
+                }
+            }
+        });
+
+        // ...
+
 
         // Configurar las columnas de la TableView
         colDocumento.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -49,6 +84,9 @@ public class StartController {
     }
     public Pane getPanelAggBeneficiaro() {
         return panel_aggBeneficiaro;
+    }
+    public Pane getPanel_actulizarBeneficiaro() {
+        return panel_actulizarBeneficiaro;
     }
 
     public void OnAddPersonButtonPressed(MouseEvent mouseEvent) {

@@ -18,7 +18,7 @@ public class ManejoBackend {
         // Lógica para mostrar el panel
         panel.setVisible(true);
         panel.setManaged(true);
-        // Otras configuraciones según sea necesario
+
     }
     public static void ocultarPanel(Pane panel) {
         panel.setVisible(false);
@@ -84,10 +84,11 @@ public class ManejoBackend {
     public static ObservableList<cls_beneficiario> listarTodosBeneficiarios() {
         return FXCollections.observableArrayList(beneficios);
     }
-    public static void actualizarBeneficiario(cls_beneficiario beneficiario) {
+    public static void actualizarBeneficiario(cls_beneficiario beneficiario, Pane panel_actulizarBeneficiario) {
         // Lógica para actualizar al beneficiario
-        System.out.println("Actualizar beneficiario: " + beneficiario.getId());
-        mostrarAlerta("Éxito", "Beneficiario actualizado correctamente.");
+        panel_actulizarBeneficiario.setManaged(true);
+        panel_actulizarBeneficiario.setVisible(true);
+
     }
     public static void eliminarBeneficiario(cls_beneficiario beneficiario) {
         // Lógica para eliminar al beneficiario
