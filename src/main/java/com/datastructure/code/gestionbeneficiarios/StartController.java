@@ -21,6 +21,10 @@ public class StartController {
     public TextField txtBuscar;
     public TableColumn<cls_beneficiario,Void> colAcciones;
     public Pane panel_actulizarBeneficiaro;
+    public TextField txt_documentoActulizar;
+    public TextField txt_nombreActualizar;
+    public TextField txt_puntajeActualizar;
+    public RadioButton radio_NoActualizar;
     @FXML
     private TableView<cls_beneficiario> tableView;
     @FXML
@@ -45,7 +49,8 @@ public class StartController {
             {
                 btnActualizar.setOnAction(event -> {
                     cls_beneficiario beneficiario = getTableView().getItems().get(getIndex());
-                    ManejoBackend.actualizarBeneficiario(beneficiario,panel_actulizarBeneficiaro);
+                    ManejoBackend.cargarInformacionBeneficiarioEnPanel(beneficiario, txt_documentoActulizar, txt_nombreActualizar, txt_puntajeActualizar, radio_NoActualizar);
+                    ManejoBackend.mostrarPanel(panel_actulizarBeneficiaro);
                 });
 
                 btnEliminar.setOnAction(event -> {
@@ -111,22 +116,33 @@ public class StartController {
         String valorBusqueda = txtBuscar.getText();
 
         if ("Listar a Todos".equals(tipoBusqueda)) {
-            // Mostrar todos los beneficiarios en la TableView
             ObservableList<cls_beneficiario> todos = ManejoBackend.listarTodosBeneficiarios();
             tableView.getItems().clear();
             tableView.setItems(todos);
         } else if (tipoBusqueda != null && !valorBusqueda.isEmpty()) {
-            // Realizar la búsqueda utilizando el backend
             ObservableList<cls_beneficiario> resultados = ManejoBackend.buscarBeneficiarios(tipoBusqueda, valorBusqueda);
 
-            // Mostrar los resultados en la TableView
             tableView.getItems().clear();
             tableView.setItems(resultados);
         } else {
-            // Mostrar un mensaje o manejar la falta de selección/tipo de búsqueda
             System.out.println("Seleccione un tipo de búsqueda y proporcione un valor.");
         }
     }
 
+    public void OnCancelarUpdate(MouseEvent mouseEvent) {
+        ManejoBackend.ocultarPanel(panel_actulizarBeneficiaro);
+        tableView.refresh();
+
+    }
+
+    public void OnLimpiarPanelActualizar(MouseEvent mouseEvent) {
+        ManejoBackend.limpiarCamposActualizar(txt_documentoActulizar,txt_nombreActualizar,txt_puntajeActualizar,radio_NoActualizar);
+    }
+
+    public void OnActualizarBeneficiaro(MouseEvent mouseEvent) {
+        String documento = txt_documentoActulizar.getText();
+        ManejoBackend.actualizarBeneficiario(documento,txt_documentoActulizar, txt_nombreActualizar, txt_puntajeActualizar, radio_NoActualizar);
+
+    }
 }
 

@@ -94,7 +94,7 @@
          </children>
       </Pane>
       <ChoiceBox fx:id="choiceBoxBuscarPor" layoutX="551.0" layoutY="161.0" prefHeight="41.0" prefWidth="158.0" />
-      <Pane fx:id="panel_actulizarBeneficiaro" layoutX="252.0" layoutY="220.0" prefHeight="390.0" prefWidth="714.0" style="-fx-background-color: #ffff;" visible="false">
+      <Pane fx:id="panel_actulizarBeneficiaro" layoutX="252.0" layoutY="220.0" prefHeight="390.0" prefWidth="714.0" style="-fx-background-color: #ffff;" visible="true">
          <children>
             <Label layoutX="117.0" layoutY="134.0" text="Documento :">
                <font>
@@ -120,9 +120,9 @@
                </font>
             </Label>
             <RadioButton fx:id="radio_NoActualizar" layoutX="239.0" layoutY="256.0" mnemonicParsing="false" text="NO" />
-            <Button fx:id="btn_cancelarActualizar" layoutX="488.0" layoutY="240.0" mnemonicParsing="false" onMouseClicked="#OnCancelarAgg" prefHeight="33.0" prefWidth="84.0" text="Cancelar" />
-            <Button fx:id="btn_limpiarActualizar" layoutX="488.0" layoutY="181.0" mnemonicParsing="false" onMouseClicked="#OnLimpiarPanelBeneficiaro" prefHeight="33.0" prefWidth="84.0" text="Limpiar " />
-            <Button fx:id="btn_guardarActualizar" layoutX="488.0" layoutY="127.0" mnemonicParsing="false" onMouseClicked="#OnGuardarBeneficiaro" prefHeight="33.0" prefWidth="84.0" text="Actualizar" />
+            <Button fx:id="btn_cancelarActualizar" layoutX="488.0" layoutY="240.0" mnemonicParsing="false" onMouseClicked="#OnCancelarUpdate" prefHeight="33.0" prefWidth="84.0" text="Cancelar" />
+            <Button fx:id="btn_limpiarActualizar" layoutX="488.0" layoutY="181.0" mnemonicParsing="false" onMouseClicked="#OnLimpiarPanelActualizar" prefHeight="33.0" prefWidth="84.0" text="Limpiar " />
+            <Button fx:id="btn_guardarActualizar" layoutX="488.0" layoutY="127.0" mnemonicParsing="false" onMouseClicked="#OnActualizarBeneficiaro" prefHeight="33.0" prefWidth="84.0" text="Actualizar" />
             <Label layoutX="239.0" layoutY="53.0" text="Actulizar Beneficiaro">
                <font>
                   <Font name="System Bold Italic" size="24.0" />

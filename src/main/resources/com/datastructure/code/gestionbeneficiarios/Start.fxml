@@ -19,7 +19,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="647.0" prefWidth="1287.0" style="-fx-background-color: #F8F9FA;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.datastructure.code.gestionbeneficiarios.StartController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="674.0" prefWidth="1294.0" style="-fx-background-color: #F8F9FA;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.datastructure.code.gestionbeneficiarios.StartController">
    <children>
       <Button layoutX="967.0" layoutY="159.0" mnemonicParsing="false" onAction="#onBuscarButtonClicked" prefHeight="41.0" prefWidth="63.0" text="Buscar" />
       <AnchorPane layoutX="-3.0" layoutY="-2.0" prefHeight="132.0" prefWidth="1292.0" style="-fx-background-color: #1E32EC;">
@@ -36,7 +36,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <TableView fx:id="tableView" layoutX="60.0" layoutY="219.0" prefHeight="420.0" prefWidth="1020.0">
+      <TableView fx:id="tableView" layoutX="58.0" layoutY="205.0" prefHeight="420.0" prefWidth="1020.0">
         <columns>
           <TableColumn fx:id="colDocumento" editable="false" prefWidth="169.99998474121094" text="Documento" />
           <TableColumn fx:id="colNombre" editable="false" prefWidth="237.33334350585938" text="Nombre" />
@@ -120,9 +120,9 @@
                </font>
             </Label>
             <RadioButton fx:id="radio_NoActualizar" layoutX="239.0" layoutY="256.0" mnemonicParsing="false" text="NO" />
-            <Button fx:id="btn_cancelarActualizar" layoutX="488.0" layoutY="240.0" mnemonicParsing="false" onMouseClicked="#OnCancelarAgg" prefHeight="33.0" prefWidth="84.0" text="Cancelar" />
-            <Button fx:id="btn_limpiarActualizar" layoutX="488.0" layoutY="181.0" mnemonicParsing="false" onMouseClicked="#OnLimpiarPanelBeneficiaro" prefHeight="33.0" prefWidth="84.0" text="Limpiar " />
-            <Button fx:id="btn_guardarActualizar" layoutX="488.0" layoutY="127.0" mnemonicParsing="false" onMouseClicked="#OnGuardarBeneficiaro" prefHeight="33.0" prefWidth="84.0" text="Actualizar" />
+            <Button fx:id="btn_cancelarActualizar" layoutX="488.0" layoutY="240.0" mnemonicParsing="false" onMouseClicked="#OnCancelarUpdate" prefHeight="33.0" prefWidth="84.0" text="Cancelar" />
+            <Button fx:id="btn_limpiarActualizar" layoutX="488.0" layoutY="181.0" mnemonicParsing="false" onMouseClicked="#OnLimpiarPanelActualizar" prefHeight="33.0" prefWidth="84.0" text="Limpiar " />
+            <Button fx:id="btn_guardarActualizar" layoutX="488.0" layoutY="127.0" mnemonicParsing="false" onMouseClicked="#OnActualizarBeneficiaro" prefHeight="33.0" prefWidth="84.0" text="Actualizar" />
             <Label layoutX="239.0" layoutY="53.0" text="Actulizar Beneficiaro">
                <font>
                   <Font name="System Bold Italic" size="24.0" />
@@ -130,5 +130,7 @@
             </Label>
          </children>
       </Pane>
+      <Button layoutX="943.0" layoutY="628.0" mnemonicParsing="false" onMouseClicked="#onAsignarTurno" prefHeight="35.0" prefWidth="133.0" text="Asignar turno." />
+      <Button layoutX="791.0" layoutY="628.0" mnemonicParsing="false" onMouseClicked="#onentregarTurno" prefHeight="35.0" prefWidth="133.0" text="Entregar Beneficio" />
    </children>
 </Pane>

@@ -13,7 +13,6 @@ import java.util.List;
 
 public class ManejoBackend {
     private static List<cls_beneficiario> beneficios = new ArrayList<>();
-    private static ObservableList<cls_beneficiario> busqueda = FXCollections.observableArrayList();
     public static void mostrarPanel(Pane panel) {
         // Lógica para mostrar el panel
         panel.setVisible(true);
@@ -26,6 +25,14 @@ public class ManejoBackend {
 
     }
     public static void limpiarCampos(TextField txtDocumento, TextField txtNombre, TextField txtPuntaje, RadioButton radioNo) {
+        // Limpia los campos
+        txtDocumento.clear();
+        txtNombre.clear();
+        txtPuntaje.clear();
+        radioNo.setSelected(false);
+        txtDocumento.requestFocus();
+    }
+    public static void limpiarCamposActualizar(TextField txtDocumento, TextField txtNombre, TextField txtPuntaje, RadioButton radioNo) {
         // Limpia los campos
         txtDocumento.clear();
         txtNombre.clear();
@@ -53,6 +60,15 @@ public class ManejoBackend {
             mostrarAlerta("Error", "Todos los campos deben estar llenos.");
         }
     }
+    public static cls_beneficiario encontrarBeneficiarioPorDocumento(String documento) {
+        for (cls_beneficiario beneficiario : beneficios) {
+            if (beneficiario.getId().equals(documento)) {
+                return beneficiario;
+            }
+        }
+        return null; // Si no se encuentra el beneficiario con el documento dado
+    }
+
 
     private static boolean todosLosCamposLlenos(TextField... campos) {
         for (TextField campo : campos) {
@@ -62,12 +78,33 @@ public class ManejoBackend {
         }
         return true;
     }
-    private static void mostrarAlerta(String titulo, String mensaje) {
+    public static void mostrarAlerta(String titulo, String mensaje) {
         Alert alerta = new Alert(Alert.AlertType.INFORMATION);
         alerta.setTitle(titulo);
         alerta.setHeaderText(null);
         alerta.setContentText(mensaje);
         alerta.showAndWait();
+    }
+    public static void actualizarBeneficiario(String documento, TextField txtDocumento, TextField txtNombre, TextField txtPuntaje, RadioButton radioNo) {
+        cls_beneficiario beneficiario = encontrarBeneficiarioPorDocumento(documento);
+
+        if (beneficiario != null) {
+            // Actualizar la información del beneficiario
+            beneficiario.setNombre(txtNombre.getText());
+            beneficiario.setPuntaje(Integer.parseInt(txtPuntaje.getText()));
+            beneficiario.setEstado(!radioNo.isSelected()); // Suponiendo que el radio button representa el estado contrario
+
+            // Limpiar los campos
+            limpiarCampos(txtDocumento, txtNombre, txtPuntaje, radioNo);
+
+            // Mostrar mensaje de éxito
+
+            mostrarAlerta("Éxito", "Beneficiario actualizado correctamente.");
+
+        } else {
+            // Manejar el caso en que el beneficiario no se encuentra
+            mostrarAlerta("Error", "No se encontró el beneficiario con documento: " + documento);
+        }
     }
     public static ObservableList<cls_beneficiario> buscarBeneficiarios(String tipoBusqueda, String valorBusqueda) {
         ObservableList<cls_beneficiario> resultados = FXCollections.observableArrayList();
@@ -90,6 +127,14 @@ public class ManejoBackend {
         panel_actulizarBeneficiario.setVisible(true);
 
     }
+    public static void cargarInformacionBeneficiarioEnPanel(cls_beneficiario beneficiario, TextField txtDocumento, TextField txtNombre, TextField txtPuntaje, RadioButton radioNo) {
+        // Cargar la información del beneficiario en los controles del panel
+        txtDocumento.setText(beneficiario.getId());
+        txtNombre.setText(beneficiario.getNombre());
+        txtPuntaje.setText(Integer.toString(beneficiario.getPuntaje()));
+        radioNo.setSelected(!beneficiario.isEstado());
+    }
+
     public static void eliminarBeneficiario(cls_beneficiario beneficiario) {
         // Lógica para eliminar al beneficiario
         beneficios.remove(beneficiario);
