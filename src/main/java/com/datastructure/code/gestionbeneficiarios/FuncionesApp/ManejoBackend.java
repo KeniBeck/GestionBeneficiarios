@@ -9,16 +9,21 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 public class ManejoBackend {
     private static List<cls_beneficiario> beneficios = new ArrayList<>();
+    public static Queue<cls_beneficiario> colaTurnos = new LinkedList<>();
+
     public static void mostrarPanel(Pane panel) {
         // Lógica para mostrar el panel
         panel.setVisible(true);
         panel.setManaged(true);
 
     }
+
     public static void ocultarPanel(Pane panel) {
         panel.setVisible(false);
         panel.setManaged(false);
@@ -118,15 +123,41 @@ public class ManejoBackend {
 
         return resultados;
     }
+    public static cls_beneficiario obtenerBeneficiarioPorId(int id) {
+        for (cls_beneficiario beneficiario : beneficios) {
+            if (beneficiario.getId().equals(String.valueOf(id))) {
+                return beneficiario;
+            }
+        }
+        return null;  // Devuelve null si no se encuentra el beneficiario
+    }
     public static ObservableList<cls_beneficiario> listarTodosBeneficiarios() {
         return FXCollections.observableArrayList(beneficios);
     }
-    public static void actualizarBeneficiario(cls_beneficiario beneficiario, Pane panel_actulizarBeneficiario) {
-        // Lógica para actualizar al beneficiario
-        panel_actulizarBeneficiario.setManaged(true);
-        panel_actulizarBeneficiario.setVisible(true);
+    public static Queue<cls_beneficiario> obtenerColaTurnos() {
+        return colaTurnos;
+    }
+    public static ObservableList<Integer> obtenerListaTurnos() {
+        List<Integer> listaTurnos = new ArrayList<>();
+        for (cls_beneficiario beneficiario : colaTurnos) {
+            listaTurnos.add(beneficiario.getTurno());
+        }
+        return FXCollections.observableList(listaTurnos);
+    }
+    private static  int  contadorTurnos = 0;
+
+    public static void asignarTurno(cls_beneficiario beneficiario) {
+        contadorTurnos++;
+        agregarBeneficiarioAColaTurnos(beneficiario);
 
     }
+
+    public static void agregarBeneficiarioAColaTurnos(cls_beneficiario beneficiario) {
+        colaTurnos.add(beneficiario);
+        ManejoBackend.mostrarAlerta("Turnos", "turno " + contadorTurnos + " asignado");
+    }
+
+
     public static void cargarInformacionBeneficiarioEnPanel(cls_beneficiario beneficiario, TextField txtDocumento, TextField txtNombre, TextField txtPuntaje, RadioButton radioNo) {
         // Cargar la información del beneficiario en los controles del panel
         txtDocumento.setText(beneficiario.getId());

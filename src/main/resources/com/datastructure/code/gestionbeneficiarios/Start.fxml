@@ -130,7 +130,17 @@
             </Label>
          </children>
       </Pane>
-      <Button layoutX="943.0" layoutY="628.0" mnemonicParsing="false" onMouseClicked="#onAsignarTurno" prefHeight="35.0" prefWidth="133.0" text="Asignar turno." />
-      <Button layoutX="791.0" layoutY="628.0" mnemonicParsing="false" onMouseClicked="#onentregarTurno" prefHeight="35.0" prefWidth="133.0" text="Entregar Beneficio" />
+      <Button fx:id="btn_VerTurnos" layoutX="943.0" layoutY="628.0" mnemonicParsing="false" onMouseClicked="#onVerTurno" prefHeight="35.0" prefWidth="133.0" text="Ver Turnos" />
+      <Pane fx:id="panel_tableTurnos" layoutX="224.0" layoutY="205.0" prefHeight="420.0" prefWidth="688.0" style="-fx-background-color: ffff;" visible="false">
+         <children>
+            <TableView fx:id="table_turnos" layoutX="47.0" prefHeight="420.0" prefWidth="462.0">
+              <columns>
+                <TableColumn fx:id="colTurnos" prefWidth="461.0" text="TURNOS" />
+              </columns>
+            </TableView>
+            <Button fx:id="btn_entregarBene" layoutX="527.0" layoutY="321.0" mnemonicParsing="false" onMouseClicked="#onentregarTurno" prefHeight="41.0" prefWidth="122.0" text="Entregar Beneficio" />
+            <Button fx:id="btn_volverTurnos" layoutX="527.0" layoutY="365.0" mnemonicParsing="false" onMouseClicked="#OnVolverTurno" prefHeight="41.0" prefWidth="122.0" text="Volver" />
+         </children>
+      </Pane>
    </children>
 </Pane>

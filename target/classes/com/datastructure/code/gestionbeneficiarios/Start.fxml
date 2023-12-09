@@ -19,7 +19,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="647.0" prefWidth="1287.0" style="-fx-background-color: #F8F9FA;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.datastructure.code.gestionbeneficiarios.StartController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="674.0" prefWidth="1294.0" style="-fx-background-color: #F8F9FA;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.datastructure.code.gestionbeneficiarios.StartController">
    <children>
       <Button layoutX="967.0" layoutY="159.0" mnemonicParsing="false" onAction="#onBuscarButtonClicked" prefHeight="41.0" prefWidth="63.0" text="Buscar" />
       <AnchorPane layoutX="-3.0" layoutY="-2.0" prefHeight="132.0" prefWidth="1292.0" style="-fx-background-color: #1E32EC;">
@@ -36,7 +36,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <TableView fx:id="tableView" layoutX="60.0" layoutY="219.0" prefHeight="420.0" prefWidth="1020.0">
+      <TableView fx:id="tableView" layoutX="58.0" layoutY="205.0" prefHeight="420.0" prefWidth="1020.0">
         <columns>
           <TableColumn fx:id="colDocumento" editable="false" prefWidth="169.99998474121094" text="Documento" />
           <TableColumn fx:id="colNombre" editable="false" prefWidth="237.33334350585938" text="Nombre" />
@@ -94,7 +94,7 @@
          </children>
       </Pane>
       <ChoiceBox fx:id="choiceBoxBuscarPor" layoutX="551.0" layoutY="161.0" prefHeight="41.0" prefWidth="158.0" />
-      <Pane fx:id="panel_actulizarBeneficiaro" layoutX="252.0" layoutY="220.0" prefHeight="390.0" prefWidth="714.0" style="-fx-background-color: #ffff;" visible="true">
+      <Pane fx:id="panel_actulizarBeneficiaro" layoutX="252.0" layoutY="220.0" prefHeight="390.0" prefWidth="714.0" style="-fx-background-color: #ffff;" visible="false">
          <children>
             <Label layoutX="117.0" layoutY="134.0" text="Documento :">
                <font>
@@ -128,6 +128,18 @@
                   <Font name="System Bold Italic" size="24.0" />
                </font>
             </Label>
+         </children>
+      </Pane>
+      <Button fx:id="btn_VerTurnos" layoutX="943.0" layoutY="628.0" mnemonicParsing="false" onMouseClicked="#onVerTurno" prefHeight="35.0" prefWidth="133.0" text="Ver Turnos" />
+      <Pane fx:id="panel_tableTurnos" layoutX="224.0" layoutY="205.0" prefHeight="420.0" prefWidth="688.0" style="-fx-background-color: ffff;" visible="false">
+         <children>
+            <TableView fx:id="table_turnos" layoutX="47.0" prefHeight="420.0" prefWidth="462.0">
+              <columns>
+                <TableColumn fx:id="colTurnos" prefWidth="461.0" text="TURNOS" />
+              </columns>
+            </TableView>
+            <Button fx:id="btn_entregarBene" layoutX="527.0" layoutY="321.0" mnemonicParsing="false" onMouseClicked="#onentregarTurno" prefHeight="41.0" prefWidth="122.0" text="Entregar Beneficio" />
+            <Button fx:id="btn_volverTurnos" layoutX="527.0" layoutY="365.0" mnemonicParsing="false" onMouseClicked="#OnVolverTurno" prefHeight="41.0" prefWidth="122.0" text="Volver" />
          </children>
       </Pane>
    </children>

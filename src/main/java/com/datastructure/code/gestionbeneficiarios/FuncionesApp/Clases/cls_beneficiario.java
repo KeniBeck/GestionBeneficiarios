@@ -5,6 +5,15 @@ public class cls_beneficiario {
     private String nombre;
     private  int puntaje;
     private boolean estado;
+    private Integer turno;
+
+    public Integer getTurno() {
+        return turno;
+    }
+
+    public void setTurno(int turno) {
+        this.turno = turno;
+    }
 
     public cls_beneficiario(String id, String nombre, int puntaje, boolean estado) {
         this.id = id;
